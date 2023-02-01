@@ -15,11 +15,15 @@ public:
 		{
 			std::cout << "number too large or small, sorry :^(" << std::endl;
 
+			/*
 			//zero fill and ship it
 			for (int i{}; i <= 7; i++)
 			{
 				returnable[i] = 0;
 			}
+			*/
+			//Change to Early Return
+			returnable = nullptr;
 		}
 		else 
 		{
