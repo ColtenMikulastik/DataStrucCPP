@@ -13,17 +13,8 @@ public:
 		// check for extranius values
 		if ((in_num >= 255) || (in_num <= 0))
 		{
+			// tell user what happend and let fall to trailing nullptr
 			std::cout << "number too large or small, sorry :^(" << std::endl;
-
-			/*
-			//zero fill and ship it
-			for (int i{}; i <= 7; i++)
-			{
-				returnable[i] = 0;
-			}
-			*/
-			//Change to Early Return
-			returnable = nullptr;
 		}
 		else 
 		{
