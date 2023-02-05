@@ -3,7 +3,7 @@
 class ByteStruc
 {
 private:
-	bool byte[8];
+	bool *byte;
 public:
 
 	// num to byte func
@@ -43,6 +43,9 @@ public:
 
 	ByteStruc(bool t_ptr[8])
 	{
+		//make new bool array on heap
+		this->byte = new bool[8];
+
 		// copy array by value into member
 		for (int i{}; i <= 7; i++)
 		{
@@ -59,5 +62,10 @@ public:
 		}
 	}
 
-
+	
+	~ByteStruc()
+	{
+		// reallocate the array 
+		delete [] byte;
+	}
 };
