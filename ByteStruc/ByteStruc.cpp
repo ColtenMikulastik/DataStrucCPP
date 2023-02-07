@@ -41,16 +41,15 @@ public:
 		returnable = nullptr;
 	}
 
-	ByteStruc(bool t_ptr[8])
+	ByteStruc(int temp_int)
 	{
 		//make new bool array on heap
 		this->byte = new bool[8];
+	
+		// send the int and bool array to the num_to_byte function
+		num_to_byte(temp_int, this->byte);
 
-		// copy array by value into member
-		for (int i{}; i <= 7; i++)
-		{
-			this->byte[i] = t_ptr[i];
-		}
+		std::cout << "completed Byte contstruction" << std::endl;
 	}
 
 	void print_byte()
