@@ -75,12 +75,15 @@ bool rec_search(int x, int y)
 		}
 		if (rec_search(x, y + 1))
 		{
+			// add information to the adjacency matrix, add to both sides of the adj_mat
 			std::cout << "matrix at node [" << x << "][" << y << "]: and node [" << x << "][" << y + 1 << "]: are connected" << std::endl;
 			adj_mat[(x * MAT_HEI) + y][(x * MAT_HEI) + (y + 1)] = 1;
+			// unsure of why this is bufferoverflowing :^.
 			adj_mat[(x * MAT_HEI) + (y + 1)][(x * MAT_HEI) + y] = 1;
 		}
 		if (rec_search(x, y - 1))
 		{
+			// add information to the adjacency matrix, add to both sides of the adj_mat
 			std::cout << "matrix at node [" << x << "][" << y << "]: and node [" << x << "][" << y - 1 << "]: are connected" << std::endl;
 			adj_mat[(x * MAT_HEI) + y][(x * MAT_HEI) + (y - 1)] = 1;
 			adj_mat[(x * MAT_HEI) + (y - 1)][(x * MAT_HEI) + y] = 1;
