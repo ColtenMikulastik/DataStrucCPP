@@ -104,6 +104,50 @@ bool rec_search(int x, int y)
 		return 0;
 }
 
+// function that finds all adjacencies in a graph
+void brute_search()
+{
+	// loop through the whole matrix
+	for (int i{}; i <= (MAT_WID - 1); i++)
+	{
+		for (int j{}; j <= (MAT_HEI - 1); j++)
+		{
+			// check index bellow current index
+			if(two_d_mat[i][j] == 1 && two_d_mat[(i + 1)][j] == 1)
+			{
+				// add to adjacency matrix
+				adj_mat[(i * MAT_HEI) + j][((i + 1) * MAT_HEI) + j] = 1;
+				adj_mat[((i + 1) * MAT_HEI) + j][(i * MAT_HEI) + j] = 1;
+			}
+			
+			// check index above current index
+			if(two_d_mat[i][j] == 1 && two_d_mat[(i - 1)][j] == 1)
+			{
+				// add to adjacency matrix
+				adj_mat[(i * MAT_HEI) + j][((i - 1) * MAT_HEI) + j] = 1;
+				adj_mat[((i - 1) * MAT_HEI) + j][(i * MAT_HEI) + j] = 1;
+			}
+
+			// check index to the righ of index
+			if(two_d_mat[i][j] == 1 && two_d_mat[i][(j + 1)] == 1)
+			{
+				// add to adjacency matrix
+				adj_mat[(i * MAT_HEI) + j][(i * MAT_HEI) + (j + 1)] = 1;
+				adj_mat[(i * MAT_HEI) + (j + 1)][(i * MAT_HEI) + j] = 1;
+			}
+
+			// check index left of index
+			if(two_d_mat[i][j] == 1 && two_d_mat[i][(j - 1)] == 1)
+			{
+				// add to adjacency matrix
+				adj_mat[(i * MAT_HEI) + j][(i * MAT_HEI) + (j - 1)] = 1;
+				adj_mat[(i * MAT_HEI) + (j - 1)][(i * MAT_HEI) + j] = 1;
+			}
+		}
+	}
+
+}
+
 
 int main()
 {
@@ -128,7 +172,9 @@ int main()
 	*/
 
 	//call function
-	rec_search(0, 0);
+	brute_search();
+
+
 	std::cout << "----------------CHECKED INDEX MATRIX----------------" << std::endl;
 	// print the checked_index matrix
 	for (int i{}; i <= (MAT_WID - 1); i++)
