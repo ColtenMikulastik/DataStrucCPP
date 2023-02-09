@@ -2,19 +2,17 @@
 
 // I am creating most thigns as global to work with the recursive function
 // global things
-const int MAT_WID{ 6 };
-const int MAT_HEI{ 6 };
+const int MAT_WID{ 3 };
+const int MAT_HEI{ 3 };
 
 // lets talk about matrix definitions c++ :^| 
 // this is the important matrix
 bool two_d_mat[MAT_HEI][MAT_WID] =
 {
-	{1, 0, 1, 1, 1, 0},
-	{1, 1, 1, 0, 0, 0},
-	{0, 0, 1, 0, 0, 0},
-	{0, 0, 1, 0, 0, 0},
-	{0, 1, 1, 1, 1, 1},
-	{0, 1, 1, 1, 0, 0}
+	{1, 0, 1},
+	{1, 1, 1},
+	{0, 0, 0}
+
 };
 
 // create 2d array that has all index's 0'd
@@ -54,7 +52,7 @@ bool rec_search(int x, int y)
 	// look for 1's that aren't out of bounds and haven't been seen yet
 	if (two_d_mat[x][y] == 1 && x < MAT_HEI && y < MAT_WID && x >= 0 && y >= 0 && (checked_indexs[x][y] == 0))
 	{
-		// add index to found index
+		// add index to found index 
 		checked_indexs[x][y] = 1;
 
 		// check indexs all around the current index
@@ -100,7 +98,7 @@ bool rec_search(int x, int y)
 
 int main()
 {
-	
+	std::cout << "----------------PRINTING OG MATRIX----------------" << std::endl;
 	// print the 2d-matrix
 	for (int i{}; i <= (MAT_WID - 1); i++)
 	{
@@ -122,7 +120,7 @@ int main()
 
 	//call function
 	rec_search(0, 0);
-
+	std::cout << "----------------CHECKED INDEX MATRIX----------------" << std::endl;
 	// print the checked_index matrix
 	for (int i{}; i <= (MAT_WID - 1); i++)
 	{
@@ -133,7 +131,7 @@ int main()
 		std::cout << std::endl;
 	}
 	
-	std::cout << "----------------UNDER CONSTRUCTION----------------" << std::endl;
+	std::cout << "----------------PRINTING ADJACENCY MATRIX----------------" << std::endl;
 	// print nodes
 	for (int i{}; i <= (MAT_WID - 1); i++)
 	{
@@ -156,4 +154,39 @@ int main()
 	}
 
 
+	std::cout << std::endl;
+	std::cout << std::endl;
+
+	std::cout << "----------------PRINTING CONNECTIVITY MATRIX----------------" << std::endl;
+	// print connections right?
+	for (int i{}; i <= (MAT_WID - 1); i++)
+	{
+		for (int j{}; j <= (MAT_HEI - 1); j++)
+		{
+			// if connected horizontally
+			if (adj_mat[(i * MAT_WID) + j][(i * MAT_WID) + (j + 1)] == 1)
+			{
+				std::cout << two_d_mat[i][j] << "-";
+			}
+			else
+			{
+				std::cout << two_d_mat[i][j] << " ";
+			}
+		}
+		std::cout << std::endl;
+
+		for (int k{}; k <= (MAT_WID - 1); k++)
+		{
+			// if connected horizontally
+			if (adj_mat[(i * MAT_WID) + k][((i + 1) * MAT_WID ) + k])
+			{
+				std::cout << "| ";
+			}
+			else
+			{
+				std::cout << "  ";
+			}
+		}
+		std::cout << std::endl;
+	}
 }
