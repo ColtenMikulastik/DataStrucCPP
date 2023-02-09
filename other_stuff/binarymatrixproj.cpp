@@ -2,16 +2,25 @@
 
 // I am creating most thigns as global to work with the recursive function
 // global things
-const int MAT_WID{ 3 };
-const int MAT_HEI{ 3 };
+const int MAT_WID{ 12 };
+const int MAT_HEI{ 12 };
 
 // lets talk about matrix definitions c++ :^| 
 // this is the important matrix
 bool two_d_mat[MAT_HEI][MAT_WID] =
 {
-	{1, 0, 1},
-	{1, 1, 1},
-	{0, 0, 0}
+	{1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0},
+	{1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0},
+	{0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0},
+	{0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0},
+	{0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0},
+	{0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0},
+	{0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0},
+	{0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0},
+	{1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0},
+	{1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0},
+	{1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1},
+	{1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 
 };
 
