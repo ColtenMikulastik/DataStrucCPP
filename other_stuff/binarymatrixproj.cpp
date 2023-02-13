@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 // I am creating most thigns as global to work with the recursive function
 // global things
@@ -20,7 +21,7 @@ bool two_d_mat[MAT_HEI][MAT_WID] =
 	{1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0},
 	{1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0},
 	{1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1},
-	{1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+	{1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1}
 
 };
 
@@ -53,6 +54,34 @@ h 0 0 0 0 0 0 0 0 0
 i 0 0 0 0 0 0 0 0 0
 }
 */
+
+
+class Blob
+{
+private:
+	static std::vector <int[2]> all_held_index;
+	std::vector <int[2]> held_index;
+
+public:
+	Blob()
+	{}
+	void find_blob_from_index(int x, int y)
+	{
+		// start at index, then loop through indexs to the right, and down, to find squares
+		for (int i{x}; i <= (MAT_WID - 1); i++)
+		{
+			for (int j{y}; j <= (MAT_HEI - 1); j++)
+			{
+				
+				
+			}
+			std::cout << std::endl;
+		}
+
+	}
+
+	
+};
 
 
 // recursive function to search matrix
@@ -112,32 +141,32 @@ void brute_search()
 	{
 		for (int j{}; j <= (MAT_HEI - 1); j++)
 		{
-			// check index bellow current index
-			if(two_d_mat[i][j] == 1 && two_d_mat[(i + 1)][j] == 1)
+			// check index bellow current index while also checking if the indexs are in-bounds
+			if(!((i + 1) >= MAT_WID) && two_d_mat[i][j] == 1 && two_d_mat[(i + 1)][j] == 1)
 			{
 				// add to adjacency matrix
 				adj_mat[(i * MAT_HEI) + j][((i + 1) * MAT_HEI) + j] = 1;
 				adj_mat[((i + 1) * MAT_HEI) + j][(i * MAT_HEI) + j] = 1;
 			}
 			
-			// check index above current index
-			if(two_d_mat[i][j] == 1 && two_d_mat[(i - 1)][j] == 1)
+			// check index above current index, and in-bounds
+			if(!((i - 1) <= MAT_WID) && two_d_mat[i][j] == 1 && two_d_mat[(i - 1)][j] == 1)
 			{
 				// add to adjacency matrix
 				adj_mat[(i * MAT_HEI) + j][((i - 1) * MAT_HEI) + j] = 1;
 				adj_mat[((i - 1) * MAT_HEI) + j][(i * MAT_HEI) + j] = 1;
 			}
 
-			// check index to the righ of index
-			if(two_d_mat[i][j] == 1 && two_d_mat[i][(j + 1)] == 1)
+			// check index to the righ of index, and in-bounds
+			if(!((j + 1) >= MAT_HEI) && two_d_mat[i][j] == 1 && two_d_mat[i][(j + 1)] == 1)
 			{
 				// add to adjacency matrix
 				adj_mat[(i * MAT_HEI) + j][(i * MAT_HEI) + (j + 1)] = 1;
 				adj_mat[(i * MAT_HEI) + (j + 1)][(i * MAT_HEI) + j] = 1;
 			}
 
-			// check index left of index
-			if(two_d_mat[i][j] == 1 && two_d_mat[i][(j - 1)] == 1)
+			// check index left of index, and in-bounds
+			if(!((j - 1) <= MAT_HEI) && two_d_mat[i][j] == 1 && two_d_mat[i][(j - 1)] == 1)
 			{
 				// add to adjacency matrix
 				adj_mat[(i * MAT_HEI) + j][(i * MAT_HEI) + (j - 1)] = 1;
