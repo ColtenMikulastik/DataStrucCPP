@@ -56,6 +56,12 @@ i 0 0 0 0 0 0 0 0 0
 */
 
 
+
+/* The idea for the blob is that it takes the matrix index, and creates a sub-matrix.
+ * The blob then uses taht infomration to either redraw sub-matrix or add conntents to it's member variables.
+ * If the blob is bad, then the blob should then refactor the contents untill an acceptable matrix is found
+ */
+
 class Blob
 {
 private:
@@ -67,6 +73,7 @@ public:
 	{}
 	void find_blob_from_index(int x, int y)
 	{
+		std::cout << "Creating blob" << std::endl;
 		// start at index, then loop through indexs to the right, and down, to find squares
 		for (int i{x}; i <= (MAT_WID - 1); i++)
 		{
