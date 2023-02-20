@@ -69,24 +69,32 @@ private:
 	std::vector <int[2]> held_index;
 
 public:
-	Blob()
-	{}
-	void find_blob_from_index(int x, int y)
+	Blob(int x, int y)
 	{
-		std::cout << "Creating blob" << std::endl;
-		// start at index, then loop through indexs to the right, and down, to find squares
-		for (int i{x}; i <= (MAT_WID - 1); i++)
+		// check this index given
+		if (two_d_mat[x][y] == 1)
 		{
-			for (int j{y}; j <= (MAT_HEI - 1); j++)
-			{
-				
-				
-			}
-			std::cout << std::endl;
+			// add index to teh thing....
+			this->all_held_index.push_back({ x, y });
+			this->held_index.push_back({ x, y });
+		}
+		else
+		{
+			// early return
+		}
+		
+		// check that index is a 1
+		bool zero_found_x{ 0 }, zero_found_y{ 0 };
+
+		while (!zero_found_x && !zero_found_y)
+		{
+			std::cout << "oh yay!" << std::endl;
+
 		}
 
-	}
 
+
+	}
 	
 };
 
