@@ -40,6 +40,32 @@ public:
 		}
 		returnable = nullptr;
 	}
+	
+	// creates a twos-complement byte
+	static void num_to_byte_twos_comp(int in_num, bool *returnable)
+	{
+		// this should fill out the byte with the last bit being a positive or negative flag
+		
+		// check if number is between 128 to -128
+		if ((in_num >= 128) || (in_num <= -128))
+		{
+			std::cout << "number too large or small!" << std::endl;
+		}
+		else
+		{
+			int i{0};
+			int dif{64};
+
+			// if number is a negative switch the sign, and set the last bool to 1
+			if( in_num > 0)
+			{
+				//
+			}
+
+		}
+
+	}
+
 
 	ByteStruc(int temp_int)
 	{
