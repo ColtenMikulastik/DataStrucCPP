@@ -59,11 +59,28 @@ public:
 			// if number is a negative switch the sign, and set the last bool to 1
 			if( in_num > 0)
 			{
-				//
+				in_num = in_num * -1;
+				returnable[7] = 1;
+			}
+			
+			// loop and set bites :^)
+			while (i <= 6)
+			{
+				if(in_num >= dif)
+				{
+					returnable[i] = 1;
+					in_num -= dif;
+				}
+				else
+				{
+					returnable[i] = 0;
+				}
+				dif /= 2;
+				i++;
 			}
 
 		}
-
+		returnable = nullptr;
 	}
 
 
