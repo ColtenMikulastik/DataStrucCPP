@@ -19,11 +19,11 @@ public:
 		else 
 		{
 			// create iterable, and difference
-			int i{ 0 };
+			int i{ 7 };
 			int dif{ 128 };
 
 			// loop til' end of array :^)
-			while (i <= 7)
+			while (i >= 0)
 			{
 				if (in_num >= dif)
 				{
@@ -35,7 +35,7 @@ public:
 					returnable[i] = 0;
 				}
 				dif /= 2;
-				i++;
+				i--;
 			}
 		}
 		returnable = nullptr;
@@ -98,7 +98,7 @@ public:
 	void print_byte()
 	{
 		std::cout << "printing byte:" << std::endl;
-		for (int i{}; i <= 7; i++)
+		for (int i{0}; i <= 7; i++)
 		{
 			std::cout << "byte at [" << i << "]: " << this->byte[i] << std::endl;
 		}
