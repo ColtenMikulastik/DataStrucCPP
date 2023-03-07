@@ -104,6 +104,19 @@ public:
 		}
 	}
 
+	bool get_bit_at(int index)
+	{
+		// get bit at a specific index
+		return this->byte[index];
+	}
+
+	void add_bytes( ByteStruc right )
+	{
+		// this adds this byte with another byte (gonna be the non-"twos complement" bytes)
+		
+
+	}
+
 	
 	~ByteStruc()
 	{
