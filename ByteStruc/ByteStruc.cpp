@@ -53,18 +53,18 @@ public:
 		}
 		else
 		{
-			int i{0};
+			int i{6};
 			int dif{64};
 
 			// if number is a negative switch the sign, and set the last bool to 1
-			if( in_num > 0)
+			if( in_num < 0)
 			{
 				in_num = in_num * -1;
 				returnable[7] = 1;
 			}
 			
 			// loop and set bites :^)
-			while (i <= 6)
+			while (i >= 0)
 			{
 				if(in_num >= dif)
 				{
@@ -76,7 +76,7 @@ public:
 					returnable[i] = 0;
 				}
 				dif /= 2;
-				i++;
+				i--;
 			}
 
 		}
@@ -90,7 +90,7 @@ public:
 		this->byte = new bool[8];
 	
 		// send the int and bool array to the num_to_byte function
-		num_to_byte(temp_int, this->byte);
+		num_to_byte_twos_comp(temp_int, this->byte);
 
 		std::cout << "completed Byte contstruction" << std::endl;
 	}
