@@ -90,7 +90,7 @@ public:
 		this->byte = new bool[8];
 	
 		// send the int and bool array to the num_to_byte function
-		num_to_byte_twos_comp(temp_int, this->byte);
+		num_to_byte(temp_int, this->byte);
 
 		std::cout << "completed Byte contstruction" << std::endl;
 	}
@@ -113,8 +113,39 @@ public:
 	void add_bytes( ByteStruc right )
 	{
 		// this adds this byte with another byte (gonna be the non-"twos complement" bytes)
+		// right now this will just print the output
+		// print what's happening 
+		std::cout << "adding two bytes: " << std::endl;
+		this->print_byte();
+		right.print_byte();
+		std::cout << "sum: ";
 		
+		bool carry {};
+		// loop through all the indexies
+		for( int i{}; i <= 7; i++)
+		{
+			bool right_bit = right.get_bit_at(i);
+			bool left_bit = this->get_bit_at(i);
 
+			if( (right_bit == 1 && left_bit == 1 )||(carry == 1 && (left_bit == 1 || right_bit == 1)))
+			{
+				// then add to teh carry counter
+				carry = 1;
+				if( left_bit == 1 && right_bit == 1 && carry == 1)
+				{
+					// this index is 1 as well as carry one
+					std::cout << "index [" << i << "] is: 1" << std::endl;
+				}	
+			}
+			else if( right_bit == 1 || left_bit == 1 || carry == 1)
+			{
+				std::cout << "index [" << i << "] is: 1" << std::endl;
+			}
+			else
+			{
+				std::cout << "index [" << i << "] is: 0" << std::endl;
+			}	
+		}
 	}
 
 	

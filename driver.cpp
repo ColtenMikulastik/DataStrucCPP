@@ -1,7 +1,8 @@
 #include <iostream>
 #include "ByteStruc/ByteStruc.cpp"
 
-int main()
+
+void get_bytes()
 {
     char input {};
     while (input != 'q')
@@ -24,3 +25,13 @@ int main()
 	}
     }
 } 
+
+
+
+int main()
+{
+	ByteStruc foo(10);
+	ByteStruc bar(20);
+	
+	foo.add_bytes(bar);
+}
