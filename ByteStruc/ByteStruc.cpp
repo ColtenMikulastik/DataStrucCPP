@@ -95,6 +95,21 @@ public:
 		std::cout << "completed Byte contstruction" << std::endl;
 	}
 
+	// copy constructor: because I forgot about this lel
+	ByteStruc(ByteStruc &input)
+	{
+		// create another byte on teh heap
+		this->byte = new bool[8];
+
+		// loop through the new byte and deep copy data
+		for(int i{}; i <= 7; i++)
+		{	
+			this->byte[i] = input.get_bit_at(i);
+		}
+
+		std::cout << "copy construc: completed Byte Construction" << std::endl;
+	}
+
 	void print_byte()
 	{
 		std::cout << "printing byte:" << std::endl;
@@ -118,11 +133,11 @@ public:
 		std::cout << "adding two bytes: " << std::endl;
 		this->print_byte();
 		right.print_byte();
-		std::cout << "sum: ";
+		std::cout << "sum: " << std::endl;
 		
 		bool carry {};
 		// loop through all the indexies
-		for( int i{}; i <= 7; i++)
+		for( int i{0}; i <= 7; i++)
 		{
 			bool right_bit = right.get_bit_at(i);
 			bool left_bit = this->get_bit_at(i);
@@ -140,6 +155,7 @@ public:
 			else if( right_bit == 1 || left_bit == 1 || carry == 1)
 			{
 				std::cout << "index [" << i << "] is: 1" << std::endl;
+				carry = 0;
 			}
 			else
 			{
