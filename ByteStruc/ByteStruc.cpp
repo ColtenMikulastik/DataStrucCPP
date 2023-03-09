@@ -144,14 +144,18 @@ public:
 
 			if( (right_bit == 1 && left_bit == 1 )||(carry == 1 && (left_bit == 1 || right_bit == 1)))
 			{
-				// then add to teh carry counter
-				std::cout << "index [" << i << "] is: 0" << std::endl;
-				carry = 1;
 				if( left_bit == 1 && right_bit == 1 && carry == 1)
 				{
-					// this index is 1 as well as carry one
+					// if all of them are one
 					std::cout << "index [" << i << "] is: 1" << std::endl;
 				}	
+				else
+				{
+					// if just two of them are 1
+					std::cout << "index [" << i << "] is: 0" << std::endl;
+				}
+				// hanging carry 
+				carry = 1;
 			}
 			else if( right_bit == 1 || left_bit == 1 || carry == 1)
 			{
