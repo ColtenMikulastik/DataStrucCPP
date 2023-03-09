@@ -31,7 +31,7 @@ void get_bytes()
 int main()
 {
 	ByteStruc foo(10);
-	ByteStruc bar(20);
+	ByteStruc bar(30);
 	
 	foo.add_bytes(bar);
 }

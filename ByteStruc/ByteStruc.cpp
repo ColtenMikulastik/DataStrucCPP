@@ -145,6 +145,7 @@ public:
 			if( (right_bit == 1 && left_bit == 1 )||(carry == 1 && (left_bit == 1 || right_bit == 1)))
 			{
 				// then add to teh carry counter
+				std::cout << "index [" << i << "] is: 0" << std::endl;
 				carry = 1;
 				if( left_bit == 1 && right_bit == 1 && carry == 1)
 				{
