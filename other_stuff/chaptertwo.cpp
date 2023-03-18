@@ -47,8 +47,37 @@ double miles_per_gallon(int gallons, int miles)
 }
 
 
-void print_triangle()
+void print_triangle(int size)
 {
+	int spaces{size}, dots{};
+	while(spaces > 0)
+	{
+		spaces--;
+		dots++;
+		// print spaces
+		for(int i{spaces}; i > 0; i--)
+		{
+			std::cout << " ";
+		}
+		
+		//print the dots
+		for(int i{dots - 1}; i > 0; i--)
+		{
+			std::cout << "*";
+		}
+		//print other side of dots
+		for(int i{dots}; i > 0; i--)
+		{
+			std::cout << "*";
+		}
+
+		//print the spaces again
+		for(int i{spaces}; i > 0 ; i--)
+		{
+			std::cout << " ";
+		}
+		std::cout << "|" << std::endl;
+	}
 
 }
 
@@ -62,7 +91,8 @@ int main()
 	// unsigned has 65,535 same ammount of bytes
 	short int foo {};
 	std::cout << "The Size of foo is: " << sizeof(foo) << " bytes." << std::endl;
-	how_many_bits(65535);
+	how_many_bits(0, 65535);
+	print_triangle(20);
 	
 
 
