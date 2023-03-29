@@ -14,18 +14,46 @@ const int MAT_HEI = {3};
 
 bool bin_mat[MAT_WID][MAT_HEI]= 
 {
-	{0,0,0},
 	{1,1,1},
-	{0,0,0}
+	{1,1,1},
+	{1,1,1}
 };
 
-bool adj_mat[MAT_WID * 2][MAT_HEI * 2]={};
+bool adj_mat[MAT_WID * MAT_HEI][MAT_WID * MAT_HEI]={};
 
 
 // function definitions
 void update_adj_matrix()
 {
 	// loop through the whole matrix
+	for(int i{}; i <= (MAT_WID - 1); i++)
+	{
+		for(int j{}; j <= (MAT_HEI - 1); j++)
+		{
+			// check index arround current index and then adjust adj mat as necissary
+			if(!((i + 1) >= MAT_WID) && bin_mat[i][j] == 1 && bin_mat[(i + 1)][j] == 1)
+			{
+				adj_mat[(i * MAT_HEI) + j][((i + 1) * MAT_HEI) + j] = 1;
+				adj_mat[((i + 1) * MAT_HEI) + j][(i * MAT_HEI) + j] = 1;
+			}
+			if(!((i - 1) <= MAT_WID) && bin_mat[i][j] == 1 && bin_mat[(i - 1)][j] == 1)
+			{
+				adj_mat[(i * MAT_HEI) + j][((i - 1) * MAT_HEI) + j] = 1;
+				adj_mat[((i - 1) * MAT_HEI) + j][(i * MAT_HEI) + j] = 1;
+			}
+			if(!((j + 1) >= MAT_HEI) && bin_mat[i][j] == 1 && bin_mat[i][(j + 1)] == 1)
+			{
+				adj_mat[(i * MAT_HEI) + j][(i * MAT_HEI) + (j + 1)] = 1;
+				adj_mat[(i * MAT_HEI) + (j + 1)][(i * MAT_HEI) + j] = 1;
+			}
+			if(!((j - 1) <= MAT_HEI) && bin_mat[i][j] == 1 && bin_mat[i][(j - 1)] == 1)
+			{
+				adj_mat[(i * MAT_HEI) + j][(i * MAT_HEI) + (j - 1)] = 1;
+				adj_mat[(i * MAT_HEI) + (j - 1)][(i * MAT_HEI) + j] = 1;
+			}
+
+		}
+	}
 	
 	
 }
@@ -61,9 +89,9 @@ void mgmt_mats()
 	print_mat();
 	
 	// print the adj matrix
-	for(int i{}; i <= ((MAT_HEI * 2) - 1); i++)
+	for(int i{}; i <= ((MAT_HEI * MAT_WID) - 1); i++)
 	{
-		for(int j{}; j <= ((MAT_WID * 2) - 1); j++)
+		for(int j{}; j <= ((MAT_HEI * MAT_WID) - 1); j++)
 		{
 			std::cout << adj_mat[i][j];
 		}
@@ -76,7 +104,8 @@ int main()
 	print_interface();
 	print_mat();
 	
-	
+	mgmt_mats();
+	update_adj_matrix();
 	mgmt_mats();
 	char stop {};
 	std::cin >> stop;
