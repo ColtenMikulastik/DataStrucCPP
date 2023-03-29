@@ -12,6 +12,7 @@ void update_adj_matrix();
 const int MAT_WID = {3};
 const int MAT_HEI = {3};
 
+// strainge this one first node is hitting third node for some reason, gonna have to check this out
 bool bin_mat[MAT_WID][MAT_HEI]= 
 {
 	{1,1,1},
@@ -35,11 +36,35 @@ void update_adj_matrix()
 			{
 				adj_mat[(i * MAT_HEI) + j][((i + 1) * MAT_HEI) + j] = 1;
 				adj_mat[((i + 1) * MAT_HEI) + j][(i * MAT_HEI) + j] = 1;
+				
+				// nested diagonals
+				if(!((j + 1) >= MAT_HEI) && bin_mat[i][j] == 1 && bin_mat[(i + 1)][(j + 1)] == 1)
+				{
+					adj_mat[(i * MAT_HEI) + j][((i + 1) * MAT_HEI) + (j + 1)] = 1;
+					adj_mat[((i + 1) * MAT_HEI) + (j + 1)][(i * MAT_HEI) + j] = 1;
+				}
+				if(!((j - 1) >= MAT_HEI) && bin_mat[i][j] == 1 && bin_mat[(i + 1)][(j - 1)] == 1)
+				{
+					adj_mat[(i * MAT_HEI) + j][((i + 1) * MAT_HEI) + (j - 1)] = 1;
+					adj_mat[((i + 1) * MAT_HEI) + (j - 1)][(i * MAT_HEI) + j] = 1;
+				}
 			}
 			if(!((i - 1) <= MAT_WID) && bin_mat[i][j] == 1 && bin_mat[(i - 1)][j] == 1)
 			{
 				adj_mat[(i * MAT_HEI) + j][((i - 1) * MAT_HEI) + j] = 1;
 				adj_mat[((i - 1) * MAT_HEI) + j][(i * MAT_HEI) + j] = 1;
+				
+				// nested diagonals
+				if(!((j + 1) >= MAT_HEI) && bin_mat[i][j] == 1 && bin_mat[(i - 1)][(j + 1)] == 1)
+				{
+					adj_mat[(i * MAT_HEI) + j][((i - 1) * MAT_HEI) + (j + 1)] = 1;
+					adj_mat[((i - 1) * MAT_HEI) + (j + 1)][(i * MAT_HEI) + j] = 1;
+				}
+				if(!((j - 1) >= MAT_HEI) && bin_mat[i][j] == 1 && bin_mat[(i - 1)][(j - 1)] == 1)
+				{
+					adj_mat[(i * MAT_HEI) + j][((i - 1) * MAT_HEI) + (j - 1)] = 1;
+					adj_mat[((i - 1) * MAT_HEI) + (j - 1)][(i * MAT_HEI) + j] = 1;
+				}
 			}
 			if(!((j + 1) >= MAT_HEI) && bin_mat[i][j] == 1 && bin_mat[i][(j + 1)] == 1)
 			{
@@ -51,7 +76,9 @@ void update_adj_matrix()
 				adj_mat[(i * MAT_HEI) + j][(i * MAT_HEI) + (j - 1)] = 1;
 				adj_mat[(i * MAT_HEI) + (j - 1)][(i * MAT_HEI) + j] = 1;
 			}
-
+			
+			// I have checked the cardinal directions-amin 
+			// so I also need to log adj to diagonals
 		}
 	}
 	
