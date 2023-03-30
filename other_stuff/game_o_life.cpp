@@ -15,9 +15,9 @@ const int MAT_HEI = {3};
 // strainge this one first node is hitting third node for some reason, gonna have to check this out
 bool bin_mat[MAT_WID][MAT_HEI]= 
 {
-	{1,1,1},
-	{1,1,1},
-	{1,1,1}
+	{1,0,1},
+	{0,1,0},
+	{0,0,0}
 };
 
 bool adj_mat[MAT_WID * MAT_HEI][MAT_WID * MAT_HEI]={};
