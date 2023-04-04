@@ -33,7 +33,7 @@ void update_adj_matrix()
 		{
 			// check index arround current index and then adjust adj mat as necissary
 			// !!! first bang before and is possibly wrong on these
-			if(!((i + 1) >= MAT_HEI) && bin_mat[i][j] == 1 && bin_mat[(i + 1)][j] == 1)
+			if(((i + 1) <= MAT_HEI) && bin_mat[i][j] == 1 && bin_mat[(i + 1)][j] == 1)
 			{
 				adj_mat[(i * MAT_HEI) + j][((i + 1) * MAT_HEI) + j] = 1;
 				adj_mat[((i + 1) * MAT_HEI) + j][(i * MAT_HEI) + j] = 1;
@@ -41,7 +41,7 @@ void update_adj_matrix()
 			}
 				
 			// diagonals	
-			if(!((i + 1) >= MAT_HEI) && bin_mat[i][j] == 1 && bin_mat[(i + 1)][j] == 1)
+			if(((i + 1) <= MAT_HEI) && bin_mat[i][j] == 1 && bin_mat[(i + 1)][j] == 1)
 			{
 				if(!((j + 1) >= MAT_WID) && bin_mat[i][j] == 1 && bin_mat[(i + 1)][(j + 1)] == 1)
 				{
@@ -56,7 +56,7 @@ void update_adj_matrix()
 			}
 
 			// down index
-			if(!((i - 1) <= MAT_HEI) && bin_mat[i][j] == 1 && bin_mat[(i - 1)][j] == 1)
+			if(((i - 1) >= 0) && bin_mat[i][j] == 1 && bin_mat[(i - 1)][j] == 1)
 			{
 				adj_mat[(i * MAT_HEI) + j][((i - 1) * MAT_HEI) + j] = 1;
 				adj_mat[((i - 1) * MAT_HEI) + j][(i * MAT_HEI) + j] = 1;
@@ -65,7 +65,7 @@ void update_adj_matrix()
 			
 			// diagonals
 
-			if(!((i - 1) <= MAT_HEI) && bin_mat[i][j] == 1 && bin_mat[(i - 1)][j] == 1)
+			if(((i - 1) >= 0) && bin_mat[i][j] == 1 && bin_mat[(i - 1)][j] == 1)
 			{
 				if(!((j + 1) >= MAT_HEI) && bin_mat[i][j] == 1 && bin_mat[(i - 1)][(j + 1)] == 1)
 				{
@@ -80,12 +80,12 @@ void update_adj_matrix()
 			}
 			
 			// left and right
-			if(!((j + 1) >= MAT_WID) && bin_mat[i][j] == 1 && bin_mat[i][(j + 1)] == 1)
+			if(((j + 1) <= MAT_WID) && bin_mat[i][j] == 1 && bin_mat[i][(j + 1)] == 1)
 			{
 				adj_mat[(i * MAT_HEI) + j][(i * MAT_HEI) + (j + 1)] = 1;
 				adj_mat[(i * MAT_HEI) + (j + 1)][(i * MAT_HEI) + j] = 1;
 			}
-			if(!((j - 1) <= MAT_WID) && bin_mat[i][j] == 1 && bin_mat[i][(j - 1)] == 1)
+			if(((j - 1) >= 0) && bin_mat[i][j] == 1 && bin_mat[i][(j - 1)] == 1)
 			{
 				adj_mat[(i * MAT_HEI) + j][(i * MAT_HEI) + (j - 1)] = 1;
 				adj_mat[(i * MAT_HEI) + (j - 1)][(i * MAT_HEI) + j] = 1;
