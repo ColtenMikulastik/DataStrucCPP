@@ -27,34 +27,46 @@ bool adj_mat[MAT_WID * MAT_HEI][MAT_WID * MAT_HEI]={};
 void update_adj_matrix()
 {
 	// loop through the whole matrix
-	for(int i{}; i <= (MAT_WID - 1); i++)
+	for(int i{}; i <= (MAT_HEI - 1); i++)
 	{
-		for(int j{}; j <= (MAT_HEI - 1); j++)
+		for(int j{}; j <= (MAT_WID - 1); j++)
 		{
 			// check index arround current index and then adjust adj mat as necissary
-			if(!((i + 1) >= MAT_WID) && bin_mat[i][j] == 1 && bin_mat[(i + 1)][j] == 1)
+			// !!! first bang before and is possibly wrong on these
+			if(!((i + 1) >= MAT_HEI) && bin_mat[i][j] == 1 && bin_mat[(i + 1)][j] == 1)
 			{
 				adj_mat[(i * MAT_HEI) + j][((i + 1) * MAT_HEI) + j] = 1;
 				adj_mat[((i + 1) * MAT_HEI) + j][(i * MAT_HEI) + j] = 1;
 				
-				// nested diagonals
-				if(!((j + 1) >= MAT_HEI) && bin_mat[i][j] == 1 && bin_mat[(i + 1)][(j + 1)] == 1)
+			}
+				
+			// diagonals	
+			if(!((i + 1) >= MAT_HEI) && bin_mat[i][j] == 1 && bin_mat[(i + 1)][j] == 1)
+			{
+				if(!((j + 1) >= MAT_WID) && bin_mat[i][j] == 1 && bin_mat[(i + 1)][(j + 1)] == 1)
 				{
 					adj_mat[(i * MAT_HEI) + j][((i + 1) * MAT_HEI) + (j + 1)] = 1;
 					adj_mat[((i + 1) * MAT_HEI) + (j + 1)][(i * MAT_HEI) + j] = 1;
 				}
-				if(!((j - 1) >= MAT_HEI) && bin_mat[i][j] == 1 && bin_mat[(i + 1)][(j - 1)] == 1)
+				if(!((j - 1) >= MAT_WID) && bin_mat[i][j] == 1 && bin_mat[(i + 1)][(j - 1)] == 1)
 				{
 					adj_mat[(i * MAT_HEI) + j][((i + 1) * MAT_HEI) + (j - 1)] = 1;
 					adj_mat[((i + 1) * MAT_HEI) + (j - 1)][(i * MAT_HEI) + j] = 1;
 				}
 			}
-			if(!((i - 1) <= MAT_WID) && bin_mat[i][j] == 1 && bin_mat[(i - 1)][j] == 1)
+
+			// down index
+			if(!((i - 1) <= MAT_HEI) && bin_mat[i][j] == 1 && bin_mat[(i - 1)][j] == 1)
 			{
 				adj_mat[(i * MAT_HEI) + j][((i - 1) * MAT_HEI) + j] = 1;
 				adj_mat[((i - 1) * MAT_HEI) + j][(i * MAT_HEI) + j] = 1;
 				
-				// nested diagonals
+			}
+			
+			// diagonals
+
+			if(!((i - 1) <= MAT_HEI) && bin_mat[i][j] == 1 && bin_mat[(i - 1)][j] == 1)
+			{
 				if(!((j + 1) >= MAT_HEI) && bin_mat[i][j] == 1 && bin_mat[(i - 1)][(j + 1)] == 1)
 				{
 					adj_mat[(i * MAT_HEI) + j][((i - 1) * MAT_HEI) + (j + 1)] = 1;
@@ -66,19 +78,19 @@ void update_adj_matrix()
 					adj_mat[((i - 1) * MAT_HEI) + (j - 1)][(i * MAT_HEI) + j] = 1;
 				}
 			}
-			if(!((j + 1) >= MAT_HEI) && bin_mat[i][j] == 1 && bin_mat[i][(j + 1)] == 1)
+			
+			// left and right
+			if(!((j + 1) >= MAT_WID) && bin_mat[i][j] == 1 && bin_mat[i][(j + 1)] == 1)
 			{
 				adj_mat[(i * MAT_HEI) + j][(i * MAT_HEI) + (j + 1)] = 1;
 				adj_mat[(i * MAT_HEI) + (j + 1)][(i * MAT_HEI) + j] = 1;
 			}
-			if(!((j - 1) <= MAT_HEI) && bin_mat[i][j] == 1 && bin_mat[i][(j - 1)] == 1)
+			if(!((j - 1) <= MAT_WID) && bin_mat[i][j] == 1 && bin_mat[i][(j - 1)] == 1)
 			{
 				adj_mat[(i * MAT_HEI) + j][(i * MAT_HEI) + (j - 1)] = 1;
 				adj_mat[(i * MAT_HEI) + (j - 1)][(i * MAT_HEI) + j] = 1;
 			}
 			
-			// I have checked the cardinal directions-amin 
-			// so I also need to log adj to diagonals
 		}
 	}
 	
@@ -89,7 +101,7 @@ char print_interface()
 {
 	// print the interface n' stuff
 	char inp {};
-	std::cout << "Hello! and Welcome to my virsion on Conway's game of life!" << std::endl;
+	std::cout << "Hello! and Welcome to my version on Conway's game of life!" << std::endl;
 	std::cout << "<press 'y' and enter to begin!>" << std::endl;
 	std::cin >> inp;
 	std::cout << "okay, come back soon!" << std::endl;
