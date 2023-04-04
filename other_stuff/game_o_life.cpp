@@ -41,7 +41,7 @@ void update_adj_matrix()
 			}
 				
 			// diagonals	
-			if(((i + 1) <= MAT_HEI) && bin_mat[i][j] == 1 && bin_mat[(i + 1)][j] == 1)
+			if(((i + 1) <= MAT_HEI))
 			{
 				if(!((j + 1) >= MAT_WID) && bin_mat[i][j] == 1 && bin_mat[(i + 1)][(j + 1)] == 1)
 				{
@@ -65,7 +65,7 @@ void update_adj_matrix()
 			
 			// diagonals
 
-			if(((i - 1) >= 0) && bin_mat[i][j] == 1 && bin_mat[(i - 1)][j] == 1)
+			if(((i - 1) >= 0))
 			{
 				if(!((j + 1) >= MAT_HEI) && bin_mat[i][j] == 1 && bin_mat[(i - 1)][(j + 1)] == 1)
 				{
