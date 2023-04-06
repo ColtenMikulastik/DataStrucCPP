@@ -99,6 +99,7 @@ void connected_ones_update_adj_matrix()
 }
 
 // this function will log all connections to ones, even in dead cells, which is required for conway's game of life
+// removing addtions to the adj to one of hte sides 
 void update_adj_matrix()
 {
 	// real index values
@@ -115,7 +116,6 @@ void update_adj_matrix()
 			if(((i + 1) <= real_MAT_HEI) && bin_mat[(i + 1)][j] == 1)
 			{
 				adj_mat[(i * MAT_HEI) + j][((i + 1) * MAT_HEI) + j] = 1;
-				adj_mat[((i + 1) * MAT_HEI) + j][(i * MAT_HEI) + j] = 1;
 			}
 				
 			// diagonals	
@@ -124,12 +124,10 @@ void update_adj_matrix()
 				if(((j + 1) <= real_MAT_WID) && bin_mat[(i + 1)][(j + 1)] == 1)
 				{
 					adj_mat[(i * MAT_HEI) + j][((i + 1) * MAT_HEI) + (j + 1)] = 1;
-					adj_mat[((i + 1) * MAT_HEI) + (j + 1)][(i * MAT_HEI) + j] = 1;
 				}
 				if(((j - 1) >= 0) && bin_mat[(i + 1)][(j - 1)] == 1)
 				{
 					adj_mat[(i * MAT_HEI) + j][((i + 1) * MAT_HEI) + (j - 1)] = 1;
-					adj_mat[((i + 1) * MAT_HEI) + (j - 1)][(i * MAT_HEI) + j] = 1;
 				}
 			}
 
@@ -137,7 +135,6 @@ void update_adj_matrix()
 			if(((i - 1) >= 0) && bin_mat[(i - 1)][j] == 1)
 			{
 				adj_mat[(i * MAT_HEI) + j][((i - 1) * MAT_HEI) + j] = 1;
-				adj_mat[((i - 1) * MAT_HEI) + j][(i * MAT_HEI) + j] = 1;
 			}
 			
 			// diagonals
@@ -146,12 +143,10 @@ void update_adj_matrix()
 				if(((j + 1) <= real_MAT_HEI) && bin_mat[(i - 1)][(j + 1)] == 1)
 				{
 					adj_mat[(i * MAT_HEI) + j][((i - 1) * MAT_HEI) + (j + 1)] = 1;
-					adj_mat[((i - 1) * MAT_HEI) + (j + 1)][(i * MAT_HEI) + j] = 1;
 				}
 				if(((j - 1) >= 0) && bin_mat[(i - 1)][(j - 1)] == 1)
 				{
 					adj_mat[(i * MAT_HEI) + j][((i - 1) * MAT_HEI) + (j - 1)] = 1;
-					adj_mat[((i - 1) * MAT_HEI) + (j - 1)][(i * MAT_HEI) + j] = 1;
 				}
 			}
 			
@@ -159,12 +154,10 @@ void update_adj_matrix()
 			if(((j + 1) <= real_MAT_WID) && bin_mat[i][(j + 1)] == 1)
 			{
 				adj_mat[(i * MAT_HEI) + j][(i * MAT_HEI) + (j + 1)] = 1;
-				adj_mat[(i * MAT_HEI) + (j + 1)][(i * MAT_HEI) + j] = 1;
 			}
 			if(((j - 1) >= 0) && bin_mat[i][(j - 1)] == 1)
 			{
 				adj_mat[(i * MAT_HEI) + j][(i * MAT_HEI) + (j - 1)] = 1;
-				adj_mat[(i * MAT_HEI) + (j - 1)][(i * MAT_HEI) + j] = 1;
 			}
 			
 		}
