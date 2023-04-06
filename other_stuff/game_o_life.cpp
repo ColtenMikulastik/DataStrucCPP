@@ -17,7 +17,7 @@ bool bin_mat[MAT_WID][MAT_HEI]=
 {
 	{1,0,1},
 	{1,1,1},
-	{0,0,0}
+	{1,0,1}
 };
 
 bool adj_mat[MAT_WID * MAT_HEI][MAT_WID * MAT_HEI]={};
@@ -26,25 +26,27 @@ bool adj_mat[MAT_WID * MAT_HEI][MAT_WID * MAT_HEI]={};
 // function definitions
 void update_adj_matrix()
 {
+	// real index values
+	int real_MAT_HEI = MAT_HEI - 1;
+	int real_MAT_WID = MAT_WID - 1;
+
 	// loop through the whole matrix
-	for(int i{}; i <= (MAT_HEI - 1); i++)
+	for(int i{}; i <= real_MAT_HEI; i++)
 	{
-		for(int j{}; j <= (MAT_WID - 1); j++)
+		for(int j{}; j <= real_MAT_WID; j++)
 		{
 			// check index arround current index and then adjust adj mat as necissary
 			// i has to do with height, j has to do with width
-			// !!! first bang before and is possibly wrong on these
-			if(((i + 1) <= MAT_HEI) && bin_mat[i][j] == 1 && bin_mat[(i + 1)][j] == 1)
+			if(((i + 1) <= real_MAT_HEI) && bin_mat[i][j] == 1 && bin_mat[(i + 1)][j] == 1)
 			{
 				adj_mat[(i * MAT_HEI) + j][((i + 1) * MAT_HEI) + j] = 1;
 				adj_mat[((i + 1) * MAT_HEI) + j][(i * MAT_HEI) + j] = 1;
-				
 			}
 				
 			// diagonals	
-			if(((i + 1) <= MAT_HEI))
+			if(((i + 1) <= real_MAT_HEI))
 			{
-				if(((j + 1) <= MAT_WID) && bin_mat[i][j] == 1 && bin_mat[(i + 1)][(j + 1)] == 1)
+				if(((j + 1) <= real_MAT_WID) && bin_mat[i][j] == 1 && bin_mat[(i + 1)][(j + 1)] == 1)
 				{
 					adj_mat[(i * MAT_HEI) + j][((i + 1) * MAT_HEI) + (j + 1)] = 1;
 					adj_mat[((i + 1) * MAT_HEI) + (j + 1)][(i * MAT_HEI) + j] = 1;
@@ -61,14 +63,12 @@ void update_adj_matrix()
 			{
 				adj_mat[(i * MAT_HEI) + j][((i - 1) * MAT_HEI) + j] = 1;
 				adj_mat[((i - 1) * MAT_HEI) + j][(i * MAT_HEI) + j] = 1;
-				
 			}
 			
 			// diagonals
-
 			if(((i - 1) >= 0))
 			{
-				if(((j + 1) <= MAT_HEI) && bin_mat[i][j] == 1 && bin_mat[(i - 1)][(j + 1)] == 1)
+				if(((j + 1) <= real_MAT_HEI) && bin_mat[i][j] == 1 && bin_mat[(i - 1)][(j + 1)] == 1)
 				{
 					adj_mat[(i * MAT_HEI) + j][((i - 1) * MAT_HEI) + (j + 1)] = 1;
 					adj_mat[((i - 1) * MAT_HEI) + (j + 1)][(i * MAT_HEI) + j] = 1;
@@ -81,7 +81,7 @@ void update_adj_matrix()
 			}
 			
 			// left and right
-			if(((j + 1) <= MAT_WID) && bin_mat[i][j] == 1 && bin_mat[i][(j + 1)] == 1)
+			if(((j + 1) <= real_MAT_WID) && bin_mat[i][j] == 1 && bin_mat[i][(j + 1)] == 1)
 			{
 				adj_mat[(i * MAT_HEI) + j][(i * MAT_HEI) + (j + 1)] = 1;
 				adj_mat[(i * MAT_HEI) + (j + 1)][(i * MAT_HEI) + j] = 1;
@@ -94,7 +94,6 @@ void update_adj_matrix()
 			
 		}
 	}
-	
 	
 }
 
