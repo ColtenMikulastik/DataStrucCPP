@@ -16,7 +16,7 @@ const int MAT_HEI = {3};
 bool bin_mat[MAT_WID][MAT_HEI]= 
 {
 	{1,0,1},
-	{0,1,0},
+	{1,1,1},
 	{0,0,0}
 };
 
@@ -32,6 +32,7 @@ void update_adj_matrix()
 		for(int j{}; j <= (MAT_WID - 1); j++)
 		{
 			// check index arround current index and then adjust adj mat as necissary
+			// i has to do with height, j has to do with width
 			// !!! first bang before and is possibly wrong on these
 			if(((i + 1) <= MAT_HEI) && bin_mat[i][j] == 1 && bin_mat[(i + 1)][j] == 1)
 			{
@@ -43,12 +44,12 @@ void update_adj_matrix()
 			// diagonals	
 			if(((i + 1) <= MAT_HEI))
 			{
-				if(!((j + 1) >= MAT_WID) && bin_mat[i][j] == 1 && bin_mat[(i + 1)][(j + 1)] == 1)
+				if(((j + 1) <= MAT_WID) && bin_mat[i][j] == 1 && bin_mat[(i + 1)][(j + 1)] == 1)
 				{
 					adj_mat[(i * MAT_HEI) + j][((i + 1) * MAT_HEI) + (j + 1)] = 1;
 					adj_mat[((i + 1) * MAT_HEI) + (j + 1)][(i * MAT_HEI) + j] = 1;
 				}
-				if(!((j - 1) >= MAT_WID) && bin_mat[i][j] == 1 && bin_mat[(i + 1)][(j - 1)] == 1)
+				if(((j - 1) >= 0) && bin_mat[i][j] == 1 && bin_mat[(i + 1)][(j - 1)] == 1)
 				{
 					adj_mat[(i * MAT_HEI) + j][((i + 1) * MAT_HEI) + (j - 1)] = 1;
 					adj_mat[((i + 1) * MAT_HEI) + (j - 1)][(i * MAT_HEI) + j] = 1;
@@ -67,12 +68,12 @@ void update_adj_matrix()
 
 			if(((i - 1) >= 0))
 			{
-				if(!((j + 1) >= MAT_HEI) && bin_mat[i][j] == 1 && bin_mat[(i - 1)][(j + 1)] == 1)
+				if(((j + 1) <= MAT_HEI) && bin_mat[i][j] == 1 && bin_mat[(i - 1)][(j + 1)] == 1)
 				{
 					adj_mat[(i * MAT_HEI) + j][((i - 1) * MAT_HEI) + (j + 1)] = 1;
 					adj_mat[((i - 1) * MAT_HEI) + (j + 1)][(i * MAT_HEI) + j] = 1;
 				}
-				if(!((j - 1) >= MAT_HEI) && bin_mat[i][j] == 1 && bin_mat[(i - 1)][(j - 1)] == 1)
+				if(((j - 1) >= 0) && bin_mat[i][j] == 1 && bin_mat[(i - 1)][(j - 1)] == 1)
 				{
 					adj_mat[(i * MAT_HEI) + j][((i - 1) * MAT_HEI) + (j - 1)] = 1;
 					adj_mat[((i - 1) * MAT_HEI) + (j - 1)][(i * MAT_HEI) + j] = 1;
