@@ -1,11 +1,11 @@
 #include <iostream>
-
+#include <unistd.h>
 
 // function prototypes
 void print_mat();
 char print_interface();
 void mgmt_mats();
-void update_adj_matrix();
+void update_adj_mat();
 void update_mat();
 
 
@@ -101,7 +101,7 @@ void connected_ones_update_adj_matrix()
 
 // this function will log all connections to ones, even in dead cells, which is required for conway's game of life
 // removing addtions to the adj to one of hte sides 
-void update_adj_matrix()
+void update_adj_mat()
 {
 	// real index values
 	int real_MAT_HEI = MAT_HEI - 1;
@@ -260,17 +260,16 @@ int main()
 {
 	print_interface();
 	
-	print_mat();
-	
-	mgmt_mats();
-	
-	update_adj_matrix();
+	while(1)
+	{
+		// just so we don't print it too much
+		std::cout << "--------------------------" << std::endl;
+		usleep(1000000);
+		print_mat();
+		update_adj_mat();
+		update_mat();
+	}
 
-	mgmt_mats();
-	
-	update_mat();
-
-	mgmt_mats();
 	char stop {};
 	std::cin >> stop;
 }
