@@ -6,6 +6,7 @@ void print_mat();
 char print_interface();
 void mgmt_mats();
 void update_adj_matrix();
+void update_mat();
 
 
 // define and assign global variables values
@@ -15,9 +16,9 @@ const int MAT_HEI = {3};
 // strainge this one first node is hitting third node for some reason, gonna have to check this out
 bool bin_mat[MAT_WID][MAT_HEI]= 
 {
-	{1,0,1},
+	{0,0,0},
 	{1,1,1},
-	{1,0,1}
+	{0,0,0}
 };
 
 bool adj_mat[MAT_WID * MAT_HEI][MAT_WID * MAT_HEI]={};
@@ -165,7 +166,54 @@ void update_adj_matrix()
 	
 }
 
+void update_mat()
+{
+	
+	// create new matrix
+	bool new_bin_mat[MAT_WID][MAT_HEI]={};
+	
+	// loop trough matrix
+	for(int i{}; i <= (MAT_HEI - 1); i++)
+	{
+		for(int j{}; j <= (MAT_WID - 1); j++)
+		{
 
+			// tally live adj cells
+			int total_live_cells={};
+			for( int a{}; a <= (MAT_HEI * MAT_WID); a++)
+			{
+				total_live_cells = total_live_cells + adj_mat[(i * MAT_HEI) + j][a];
+			}
+			
+			// populate new matrix based on the tally, and the conways rules
+			if( bin_mat[i][j] == 1 && (total_live_cells == 2 || total_live_cells == 3))
+			{
+				//living cell with 2 or 3 neighbors lives
+				new_bin_mat[i][j] = 1;
+			}
+			else if( bin_mat[i][j] == 0 && total_live_cells == 3)
+			{
+				// dead cell with 3 neighbors lives
+				new_bin_mat[i][j] = 1;
+			}
+			else
+			{
+				// all other die or stay dead
+				new_bin_mat[i][j] = 0;
+			}
+		}
+	}
+	
+	// then loop through both matrix and load information into old-new matrix
+	
+	for(int i{}; i <= (MAT_HEI - 1); i++)
+	{
+		for(int j{}; j <= (MAT_WID - 1); j++)
+		{
+			bin_mat[i][j] = new_bin_mat[i][j];
+		}
+	}
+}
 
 char print_interface()
 {
@@ -194,7 +242,7 @@ void print_mat()
 
 void mgmt_mats()
 {	
-	// print the matric with function
+	// print the matrix with function
 	print_mat();
 	
 	// print the adj matrix
@@ -211,10 +259,17 @@ void mgmt_mats()
 int main()
 {
 	print_interface();
+	
 	print_mat();
 	
 	mgmt_mats();
+	
 	update_adj_matrix();
+
+	mgmt_mats();
+	
+	update_mat();
+
 	mgmt_mats();
 	char stop {};
 	std::cin >> stop;
