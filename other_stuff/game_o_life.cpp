@@ -101,8 +101,19 @@ void connected_ones_update_adj_matrix()
 
 // this function will log all connections to ones, even in dead cells, which is required for conway's game of life
 // removing addtions to the adj to one of hte sides 
+// maybe we should only be logging the eight adjacencys...
 void update_adj_mat()
 {
+	
+	// reset the adj matrix duh!
+	for(int i{}; i <= (MAT_HEI * MAT_WID); i++)
+	{
+		for(int j{}; j <= (MAT_HEI * MAT_WID); j++)
+		{
+			adj_mat[i][j] = 0;
+		}
+	}
+
 	// real index values
 	int real_MAT_HEI = MAT_HEI - 1;
 	int real_MAT_WID = MAT_WID - 1;
@@ -180,7 +191,7 @@ void update_mat()
 
 			// tally live adj cells
 			int total_live_cells={};
-			for( int a{}; a <= (MAT_HEI * MAT_WID); a++)
+			for( int a{}; a <= ((MAT_HEI * MAT_WID) - 1); a++)
 			{
 				total_live_cells = total_live_cells + adj_mat[(i * MAT_HEI) + j][a];
 			}
