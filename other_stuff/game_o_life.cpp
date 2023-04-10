@@ -258,7 +258,14 @@ void print_mat()
 	{
 		for(int j{}; j <= (MAT_WID - 1); j++)
 		{
-			std::cout << bin_mat[i][j];
+			if(bin_mat[i][j] == 1)
+			{
+				std::cout << " ";
+			}
+			else
+			{
+				std::cout << bin_mat[i][j];
+			}
 		}
 		std::cout << std::endl;
 	}
