@@ -36,6 +36,8 @@ bool bin_mat[MAT_WID][MAT_HEI]=
 
 bool adj_mat[MAT_WID * MAT_HEI][MAT_WID * MAT_HEI]={};
 
+bool smaller_adj_mat[MAT_WID * MAT_HEI][8]={};
+
 
 // function definitions:
 // this function finds all connected ones in the eight cells around it
