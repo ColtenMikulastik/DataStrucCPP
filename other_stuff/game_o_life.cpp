@@ -7,6 +7,7 @@ char print_interface();
 void mgmt_mats();
 void update_adj_mat();
 void update_mat();
+void update_smaller_adj_mat();
 
 
 // define and assign global variables values
@@ -191,6 +192,14 @@ void update_adj_mat()
 	}
 	
 }
+
+// this is the update function for the smaller matrix
+void update_smaller_adj_mat()
+{
+
+
+}
+
 
 void update_mat()
 {
