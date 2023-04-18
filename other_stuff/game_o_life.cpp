@@ -37,7 +37,7 @@ bool bin_mat[MAT_WID][MAT_HEI]=
 
 bool adj_mat[MAT_WID * MAT_HEI][MAT_WID * MAT_HEI]={};
 
-bool smaller_adj_mat[MAT_WID * MAT_HEI][8]={};
+bool smaller_adj_mat[8][MAT_WID * MAT_HEI]={};
 
 
 // function definitions:
@@ -196,6 +196,18 @@ void update_adj_mat()
 // this is the update function for the smaller matrix
 void update_smaller_adj_mat()
 {
+
+	// zero out the adj matrix
+	for(int i{}; i < 8; i++)
+	{
+		for(int j{}; j <= (MAT_HEI * MAT_WID); j++)
+		{
+			smaller_adj_mat[i][j] = 0;
+		}
+	}
+	
+	// 
+
 
 
 }
