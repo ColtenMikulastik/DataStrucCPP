@@ -1,5 +1,5 @@
 #include <iostream>
-#include "NodeTemplate.cpp"
+#include "NodeTemplate.h"
 
 using namespace std;
 
