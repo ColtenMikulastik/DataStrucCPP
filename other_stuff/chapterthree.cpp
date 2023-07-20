@@ -28,10 +28,25 @@ void rectangle()
 }
 
 
+void ingadj()
+{
+	/*
+     * recipy: 1.5 cups of sugar, 1 cup butter, and 2.75 cup flower
+     *
+     */
+
+    const double rsugar{1.5}, rbutter{1}, rflower{2.75};
+
+    std::cout << rsugar << rbutter << rflower << std::endl;
+
+}
+
+
 int main()
 {
     // rectangle();
     std::cout << mypower(12, 4) << std::endl;
 
+    ingadj();
     return 0;
 }
