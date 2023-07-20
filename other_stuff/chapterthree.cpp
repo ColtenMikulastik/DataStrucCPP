@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 
 int mypower(int num, int pow)
 {
@@ -52,12 +54,29 @@ void ingadj()
     std::cout << rflower * ratio << " cups of flower" << std::endl; 
 }
 
+void mathtutor()
+{
+	// doing the random stuffs
+	unsigned seed = time(0);
+	srand(seed);
+	
+	// generate the numbers
+	int firstnumber = (rand() % 1001), secondnumber = (rand() % 1001);
+	
+	int trash{};
+	std::cout << " " << firstnumber << std::endl;
+	std::cout << "+" << secondnumber << std::endl;
+	std::cout << "--------" << std::endl;
+	std::cin >> trash;
+	std::cout << firstnumber + secondnumber << std::endl;
+}
+
 
 int main()
 {
     // rectangle();
     std::cout << mypower(12, 4) << std::endl;
 
-    ingadj();
+    mathtutor();
     return 0;
 }
