@@ -37,8 +37,19 @@ void ingadj()
 
     const double rsugar{1.5}, rbutter{1}, rflower{2.75};
 
-    std::cout << rsugar << rbutter << rflower << std::endl;
+    double input{};
 
+    // grab input
+    std::cout << "how many cookies do you want to make?: ";
+    std::cin >> input;
+
+    // get ratio of input and of default cookies
+    double ratio = input / 48;
+
+    std::cout << "to make " << input << " cookies you will need:" << std::endl;
+    std::cout << rsugar * ratio << " cups of sugar" << std::endl;
+    std::cout << rbutter * ratio << " cups of butter" << std::endl;
+    std::cout << rflower * ratio << " cups of flower" << std::endl; 
 }
 
 
