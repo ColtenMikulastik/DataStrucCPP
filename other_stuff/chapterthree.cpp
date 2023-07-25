@@ -79,12 +79,19 @@ void interest_earned()
     
     double int_rate{}, time{}, principal{}, interest{};
     
-    int_rate = .0425;
-    time = 12;
-    principal = 1000;
-    interest = pow(1 + (int_rate/time), time);
+    // get input
+    std::cout << "please give your interest rate (in percent): ";
+    std::cin >> int_rate;
+    int_rate = int_rate / 100;
+    std::cout << "please give the time in cycles: ";
+    std::cin >> time;
+    std::cout << "please give the principal: ";
+    std::cin >> principal;
 
-    std::cout << principal * interest << std::endl;
+    interest = pow(1 + (int_rate/time), time);
+    std::cout << "your interest will be: " << (principal * interest) - principal << std::endl;
+
+    std::cout << "your final ammount will be " << principal * interest << std::endl;
     
 
 }
