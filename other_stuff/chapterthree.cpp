@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 #include <cstdlib>
 #include <ctime>
 
@@ -71,12 +72,29 @@ void mathtutor()
 	std::cout << firstnumber + secondnumber << std::endl;
 }
 
+void interest_earned()
+{
+    // amount = principal * ( 1 + (rate/T))^T
+    // T = time
+    
+    double int_rate{}, time{}, principal{}, interest{};
+    
+    int_rate = .0425;
+    time = 12;
+    principal = 1000;
+    interest = pow(1 + (int_rate/time), time);
+
+    std::cout << principal * interest << std::endl;
+    
+
+}
+
 
 int main()
 {
     // rectangle();
     std::cout << mypower(12, 4) << std::endl;
 
-    mathtutor();
+    interest_earned();
     return 0;
 }
