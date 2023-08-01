@@ -92,7 +92,17 @@ void interest_earned()
     std::cout << "your interest will be: " << (principal * interest) - principal << std::endl;
 
     std::cout << "your final ammount will be " << principal * interest << std::endl;
-    
+}
+
+
+void retail_sale()
+{
+
+	double total_sale {};
+	std::cout << "What is the total today?: ";
+	std::cin >> total_sale;
+
+	std::cout << total_sale << "$" << std::endl;
 
 }
 
@@ -102,6 +112,6 @@ int main()
     // rectangle();
     std::cout << mypower(12, 4) << std::endl;
 
-    interest_earned();
+    retail_sale();
     return 0;
 }
