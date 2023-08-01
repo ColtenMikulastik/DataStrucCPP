@@ -95,16 +95,38 @@ void interest_earned()
 }
 
 
-void retail_sale()
+void prog_3_28()
 {
+	// this prgram will get volume of crate from user and calculate cost
+	double leng {}, wid {}, height{};
+	
+	// gather information about teh user
+	std::cout << "what is the length of crate that you need?: ";
+	std::cin >> leng;
+	std::cout << "what is the width of crate that you need?: ";
+	std::cin >> wid;
+	std::cout << "what is the height of crate that you need?: ";
+	std::cin >> height;
 
-	double total_sale {};
-	std::cout << "What is the total today?: ";
-	std::cin >> total_sale;
+	std::cout << "\nNow calculating cost..." << std::endl;
 
-	std::cout << total_sale << "$" << std::endl;
+	// store important information about profits
+	const double OUR_COST_PER_VOL {0.23}, CONSUMER_COST_PER_VOL {0.5};
+
+	// calculate and print the information
+	double volume = leng * wid * height;
+	double consumer_cost = volume * CONSUMER_COST_PER_VOL;
+	double our_cost = volume * OUR_COST_PER_VOL;
+	double gross_income = consumer_cost - our_cost;
+
+	// print this information
+	std::cout << "for (" << volume << ") sqft of volume at: " << CONSUMER_COST_PER_VOL << std::endl;
+	std::cout << "the consumer cost will be: " << consumer_cost << std::endl;
+	std::cout << "our cost will be: " << our_cost << std::endl;
+	std::cout << "the profit will be: " << gross_income << std::endl;
 
 }
+
 
 
 int main()
@@ -112,6 +134,6 @@ int main()
     // rectangle();
     std::cout << mypower(12, 4) << std::endl;
 
-    retail_sale();
+    prog_3_28();
     return 0;
 }
