@@ -1,5 +1,49 @@
 #include <iostream>
 
+void menu();
+void progfourone();
+bool is_uppercase(char test);
+
+void menu()
+{
+    char choice {};
+    std::cout << "what would you like to do (a,b,c,d,e)" << std::endl;
+    std::cin >> choice;
+    switch(choice)
+    {
+        case 'a':
+            {
+            std::cout << "you chose a" <<std::endl;
+            char letter{};
+            std::cout << "please give me a letter: ";
+            std::cin >> letter;
+            is_uppercase(letter);
+            break;
+            }
+
+        case 'b':
+            std::cout << "you chose b" <<std::endl;
+                break;
+
+        case 'c':
+            std::cout << "you chose c" <<std::endl;
+                break;
+
+        case 'd':
+            std::cout << "you chose d" <<std::endl;
+                break;
+
+        case 'e':
+            std::cout << "you chose e" <<std::endl;
+                break;
+
+        default:
+            std::cout << "hmmm you didn't do it right" << std::endl;
+
+    }
+}
+
+
 bool is_uppercase(char test)
 {
     // we can tell the case of a letter by utilizing the int ascii value of a char
@@ -42,6 +86,7 @@ void progfourone()
 
 int main()
 {
+    menu();
     std::cout << is_uppercase('a') << std::endl;
     std::cout << is_uppercase('A') << std::endl;
 }
