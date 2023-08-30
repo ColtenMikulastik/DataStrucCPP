@@ -8,18 +8,30 @@
  */
 
 
-class GraphStruc;
+class GraphStruc
 {
 	private:
-		NodeTemplate* nodes;
+		Node* nodes;
 		int node_count;
 		// this might need to be just a const size for now
-		bool adj_matrix [][];
+		bool adj_matrix [1][1];
 
 	public:
+		GraphStruc()
+		{
+			std::cout << "Creating a Graph!" << std::endl;
+			
+		}
+		~GraphStruc()
+		{
+			std::cout << "Removing Graph!" << std::endl;
+		}
+};
 
-
-
+int main()
+{
+	GraphStruc test;
+	return 0;
 }
 
 
