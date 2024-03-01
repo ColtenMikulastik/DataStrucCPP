@@ -28,6 +28,9 @@ BinaryNode::BinaryNode(int t_value)
 	this->child_two = nullptr;
 }
 
+BinaryNode::~BinaryNode()
+{}
+
 BinaryNode* BinaryNode::get_child_one() {return this->child_one;}
 
 BinaryNode* BinaryNode::get_child_two() {return this->child_two;}
