@@ -34,6 +34,15 @@ void BinarySearchTree::recersive_delete(BinaryNode *leaf)
 
 void BinarySearchTree::append_node(int t_value)
 {
-	BinaryNode *start = this->root;
+	BinaryNode *place = this->root;
 	
+	// check value size to go left or right
+	bool place_found = false;
+	while(!place_found)
+	{
+
+
+
+
+	}
 }
