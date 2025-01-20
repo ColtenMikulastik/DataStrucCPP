@@ -7,3 +7,7 @@ main.exe: driver.cpp
 
 clean: 
 	rm -rf ./*.exe
+
+debug: 
+	g++ ./driver.cpp -g -o test.exe
+	gdb ./test.exe

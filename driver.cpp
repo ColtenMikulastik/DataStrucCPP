@@ -34,4 +34,6 @@ int main()
 	ByteStruc bar(30);
 	
 	foo.add_bytes(bar);
+	foo.print_byte();
+	return 0;
 }
