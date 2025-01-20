@@ -1,3 +1,4 @@
+#include <bits/fs_fwd.h>
 #include <iostream>
 #include <cmath>
 
@@ -7,7 +8,7 @@ private:
 	bool *byte;
 public:
 	static void num_to_byte(int in_num, bool *returnable);
-	static void num_to_byte_twos_comp(int in_num, bool *returnable);
+	static void make_twos_comp_neg(bool *returnable);
 	ByteStruc(int temp_int);
 	ByteStruc(ByteStruc &input);
 	void print_byte();
@@ -53,47 +54,20 @@ void ByteStruc::num_to_byte(int in_num, bool *returnable)
 }
 
 // creates a twos-complement byte
-void ByteStruc::num_to_byte_twos_comp(int in_num, bool *returnable)
+void ByteStruc::make_twos_comp_neg(bool *returnable)
 {
 	// this should fill out the byte with the last bit being a positive or negative flag
+	// ^ this desicribes sign and magnitude, not twos comp
 	
-	// check if number is between 128 to -128
-	if ((in_num >= 128) || (in_num <= -128))
+	// flip all the bits
+	for(int i{}; i <= 7; i++)
 	{
-		std::cout << "number too large or small!" << std::endl;
+		returnable[i] = !returnable[i];
 	}
-	else
-	{
-		int i{6};
-		int dif{64};
-
-		// if number is a negative switch the sign, and set the last bool to 1
-		if( in_num < 0)
-		{
-			in_num = in_num * -1;
-			returnable[7] = 1;
-		}
-		
-		// loop and set bites :^)
-		while (i >= 0)
-		{
-			if(in_num >= dif)
-			{
-				returnable[i] = 1;
-				in_num -= dif;
-			}
-			else
-			{
-				returnable[i] = 0;
-			}
-			dif /= 2;
-			i--;
-		}
-
-	}
-	returnable = nullptr;
+	// add a 1
+	// wow this has defeated me
+	// this is sillyness
 }
-
 
 ByteStruc::ByteStruc(int temp_int)
 {
