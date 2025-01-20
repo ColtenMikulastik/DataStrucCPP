@@ -35,5 +35,6 @@ int main()
 	
 	foo.add_bytes(bar);
 	foo.print_byte();
+	std::cout << bar.byte_to_int() << std::endl;
 	return 0;
 }

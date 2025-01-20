@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 
 class ByteStruc
 {
@@ -12,6 +13,7 @@ public:
 	void print_byte();
 	bool get_bit_at(int index);
 	void add_bytes( ByteStruc right );
+	int byte_to_int();
 	~ByteStruc();
 };
 
@@ -176,6 +178,18 @@ void ByteStruc::add_bytes( ByteStruc right )
 			std::cout << "index [" << i << "] is: 0" << std::endl;
 		}	
 	}
+}
+
+int ByteStruc::byte_to_int()
+{
+	int sum {};
+	// this function will take the bit place values and multiply them by their decimal values
+	for(int i {}; i < 8; i++)
+	{
+		// basically i will represent 'n' in the 2^n place value equation
+		sum = sum + (pow(2, i) * this->byte[i]);
+	}
+	return sum;
 }
 
 ByteStruc::~ByteStruc()
